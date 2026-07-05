@@ -21,7 +21,7 @@ Portfolio artifact:
 
 Status:
 
-- In progress
+- Automated run complete; manual scoring pending
 
 ## Phase 1: Local AI Lab
 
@@ -51,11 +51,11 @@ Status:
 
 ## Phase 2: Prompt Evaluation Basics
 
-Goal: Create repeatable evaluations for prompt quality, correctness, and consistency.
+Goal: Build a repeatable evaluation runner that compares models using structured prompt sets and produces saved results.
 
 Example work:
 
-- Build a small evaluation dataset
+- Build a baseline evaluation dataset
 - Create an eval runner
 - Define scoring criteria
 - Compare baseline prompts against revised prompts
@@ -63,7 +63,18 @@ Example work:
 
 Portfolio artifact:
 
-- Prompt evaluation report
+- `evals/results/model_eval_report_001.md`
+
+Outputs:
+
+- `eval-runner`
+- Baseline evaluation dataset
+- Result files
+- Markdown report generator
+
+Status:
+
+- In progress
 
 ## Phase 3: AI Security Foundations
 

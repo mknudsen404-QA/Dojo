@@ -55,9 +55,9 @@ capstone/    Final client-style assurance package
 
 ## Current Phase
 
-Phase 1: Local AI Lab.
+Phase 2: Evaluation Harness.
 
-The focus is to run local LLMs, capture basic behavior, compare model tradeoffs, and choose a practical default model for evaluation work.
+The focus is to build a repeatable evaluation runner that compares local models using structured prompt sets and produces saved results.
 
 ## Phase 0 Acceptance Criteria
 
@@ -81,6 +81,16 @@ The focus is to run local LLMs, capture basic behavior, compare model tradeoffs,
 - [x] First local model comparison report written
 - [x] Internal QA assistant model comparison written
 - [x] Scoring gap documented
+
+## Phase 2 Outputs
+
+- [x] Baseline evaluation dataset created
+- [x] Evaluation runner created
+- [x] Manual scoring rubric created
+- [x] Markdown report generator created
+- [x] Full 50-prompt, 3-model evaluation run completed
+- [ ] Manual scoring completed
+- [x] Initial `evals/results/model_eval_report_001.md` generated
 
 ## How to Work in This Repo
 

@@ -33,8 +33,13 @@
 
 ## Phase 2 Candidates
 
-- [x] Add seed dataset with expected answers and scoring types.
-- [ ] Build exact-match scoring.
-- [ ] Build JSON-schema scoring.
-- [ ] Add rubric template for hallucination and refusal tests.
-- [ ] Run the Phase 2 seed dataset against `qwen2.5:3b`, `llama3.2:3b`, and `gemma3:1b`.
+- [x] Add 50-case baseline dataset with expected answers and scoring types.
+- [x] Build exact-match scoring.
+- [x] Build JSON-schema scoring.
+- [x] Add manual scoring rubric for hallucination, refusal, and subjective tests.
+- [x] Build repeatable evaluation runner.
+- [x] Build markdown report generator.
+- [x] Run the Phase 2 baseline dataset against `qwen2.5:3b`, `llama3.2:3b`, and `gemma3:1b`.
+- [x] Generate initial `evals/results/model_eval_report_001.md`.
+- [ ] Manually score the first 50 outputs.
+- [ ] Finalize `evals/results/model_eval_report_001.md` after manual scoring.

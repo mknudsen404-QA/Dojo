@@ -1,16 +1,28 @@
-# Model Comparison 001: Internal QA Assistant Candidate
+# Model Comparison 001: Local Internal QA Assistant Candidate
 
 Date: 2026-07-05
+
+Review status: Accepted with minor revisions applied.
 
 ## Question
 
 Which local model looks most promising for an internal QA assistant?
+
+## Scope
+
+This report evaluates local model behavior for early-stage lab use on a Mac Mini M2 with 8 GB memory. It does not determine production readiness, enterprise suitability, security posture, or final model quality.
 
 ## Short Answer
 
 `qwen2.5:3b` is the best current candidate for an internal QA assistant on this Mac Mini M2 lab setup.
 
 It is not production-ready yet. It is the best next model to evaluate more rigorously because it completed every baseline prompt, had practical latency, and produced comparatively useful responses under the same response-length budget.
+
+## Confidence Level
+
+Low to Medium.
+
+The recommendation is useful for selecting the next model to test, but the sample size is too small and lacks ground-truth scoring. The decision should not be treated as a final model-quality conclusion.
 
 ## Evidence Used
 
@@ -32,7 +44,7 @@ Run settings:
 
 ## Results Summary
 
-| Model | Completed | Avg Time | Timeouts | QA Assistant Readiness |
+| Model | Completed | Avg Time on Completed Prompts | Timeouts | QA Assistant Readiness |
 |---|---:|---:|---:|---|
 | `qwen2.5:3b` | 5/5 | 2.68s | 0 | Best candidate |
 | `llama3.2:3b` | 5/5 | 3.15s | 0 | Good comparison baseline |
@@ -169,6 +181,15 @@ Do not use `mistral:7b` for routine short-loop evals on this 8 GB Mac Mini. Keep
 ## Scoring Gap
 
 Current limitation: outputs were reviewed manually, but not all factual or mathematical claims were validated against ground truth. Future evaluation runs should include answer keys, explicit scoring criteria, and automated checks for exact match, JSON validity, refusal quality, and unsupported claims.
+
+## Next Evaluation Questions
+
+- Does `qwen2.5:3b` outperform `llama3.2:3b` when scored against answer keys?
+- Does `qwen2.5:3b` produce valid structured JSON when required?
+- How does each model behave on hallucination traps?
+- How does each model respond to prompt injection attempts?
+- Does model quality degrade under lower `num_predict` values?
+- What is the best balance of latency, completeness, and correctness for this hardware?
 
 ## Decision
 

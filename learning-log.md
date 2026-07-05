@@ -194,3 +194,56 @@ Next step:
 
 - Improve the evaluation set with ground-truth answers, hallucination traps, and basic scoring.
 - Review the existing model cards and add quantization details where available.
+
+## 2026-07-05: Phase 2 Evaluation Harness Kickoff
+
+Phase: 2 - Evaluation Harness
+
+Time spent: Initial runner, dataset, and report-generator setup
+
+What I learned:
+
+- A useful evaluation harness needs structured test cases, saved raw outputs, scoring metadata, and a report path.
+- Not every evaluation can be scored automatically. Exact-match and JSON checks can be automated, while hallucination, refusal quality, and test-case generation need manual rubric scoring.
+
+What I built or tested:
+
+- Created `evals/datasets/baseline_eval_set_001.jsonl` with 50 prompts.
+- Created a repeatable local Ollama evaluation runner.
+- Created a manual scoring rubric.
+- Created a markdown report generator.
+
+What I broke:
+
+- Nothing yet.
+
+How I measured it:
+
+- Ran 50 prompts against 3 local models for 150 total model responses.
+- Captured completion status, latency, tokens per second, raw responses, automatic scoring, and manual scoring placeholders.
+
+Results:
+
+- `qwen2.5:3b`: 50/50 completed, 1.32s average latency, 93.8% auto-scored pass rate.
+- `llama3.2:3b`: 50/50 completed, 1.41s average latency, 81.2% auto-scored pass rate.
+- `gemma3:1b`: 50/50 completed, 1.19s average latency, 50.0% auto-scored pass rate.
+- Automatic scoring covered 48 of 150 rows; the remaining 102 rows require manual rubric scoring.
+
+Limitations:
+
+- Manual scoring is not complete.
+- The dataset is an initial baseline and should be expanded after the first scored run.
+- Exact-match scoring is intentionally strict and can fail answers that include extra explanatory text.
+- JSON-schema scoring only checks required top-level keys.
+
+What I would do differently:
+
+- Keep objective checks separate from judgment-based scoring so the report does not overstate certainty.
+
+Artifacts committed:
+
+- Pending Phase 2 evaluation harness commit.
+
+Next step:
+
+- Manually score the first 50 outputs for `qwen2.5:3b`, then update `model_eval_report_001.md`.
