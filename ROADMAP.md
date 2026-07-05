@@ -23,20 +23,31 @@ Status:
 
 - In progress
 
-## Phase 1: Local Model Operations
+## Phase 1: Local AI Lab
 
-Goal: Run local models, record behavior, and compare model tradeoffs.
+Goal: Run local LLMs and understand basic model behavior before adding security, RAG, or fine-tuning.
 
 Example work:
 
 - Install and verify Ollama or another local runtime
-- Run baseline prompts against at least two models
+- Run baseline prompts against at least three models
 - Capture latency, quality, failure modes, and resource notes
 - Write a model comparison
 
 Portfolio artifact:
 
 - Local model comparison report
+
+Outputs:
+
+- Local models running
+- Model behavior notes
+- Basic prompt set
+- First model comparison report
+
+Status:
+
+- Ready for review
 
 ## Phase 2: Prompt Evaluation Basics
 

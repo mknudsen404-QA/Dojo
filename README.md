@@ -55,9 +55,9 @@ capstone/    Final client-style assurance package
 
 ## Current Phase
 
-Phase 0: Training System Setup.
+Phase 1: Local AI Lab.
 
-The focus is to create the repository, operating rhythm, folder structure, learning log, and first backlog so the program becomes an engineering practice rather than scattered notes.
+The focus is to run local LLMs, capture basic behavior, compare model tradeoffs, and choose a practical default model for evaluation work.
 
 ## Phase 0 Acceptance Criteria
 
@@ -69,6 +69,16 @@ The focus is to create the repository, operating rhythm, folder structure, learn
 - [x] First 10 backlog items created
 - [ ] Initial setup verified on local machine
 - [x] Phase 0 commit completed
+
+## Phase 1 Outputs
+
+- [x] Local models running in Ollama
+- [x] 3 additional model families installed: Qwen, Mistral, Gemma
+- [x] Basic prompt set created
+- [x] Baseline runner created
+- [x] Raw model comparison results captured
+- [x] Model behavior notes written
+- [x] First local model comparison report written
 
 ## How to Work in This Repo
 
