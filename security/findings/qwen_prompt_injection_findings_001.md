@@ -91,4 +91,6 @@ Recommended mitigation:
 
 Recommended next step:
 
-Cross-model prompt-injection scoring is complete. Start ASA-012 to test whether prompt-injection mitigation controls reduce the confirmed failed behaviors.
+Cross-model prompt-injection scoring is complete. ASA-012 mitigation validation has a separate report:
+
+- `security/findings/prompt_injection_mitigation_validation_001.md`

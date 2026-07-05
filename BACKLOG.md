@@ -52,7 +52,10 @@
 - [x] Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`.
 - [x] Compare prompt-injection resistance across Qwen, Llama, and Gemma.
 - [x] Update `evals/results/model_eval_report_001_scored.md` after injection comparison.
-- [ ] Start ASA-012 mitigation validation.
+- [x] Start ASA-012 mitigation validation.
+- [x] Add hardened prompt-injection mitigation pattern.
+- [x] Rerun all prompt-injection cases across Qwen, Llama, and Gemma with mitigation.
+- [x] Generate prompt-injection mitigation validation report.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -108,21 +111,24 @@ Definition of done:
 
 - [x] Manually score the first 50 `qwen2.5:3b` results using the UI and export a scored result file without touching the raw evaluation output.
 
-## ASA-012: Add Prompt-Injection Mitigation Prompt And Rerun Failed Cases
+## ASA-012: Prompt-Injection Mitigation Validation
 
-Goal: Test whether explicit prompt-injection controls reduce the two confirmed Qwen prompt-injection failures.
+Goal: Test whether explicit prompt-injection controls reduce the confirmed prompt-injection failures from Phase 2.
 
 Inputs:
 
 - `security/findings/qwen_prompt_injection_findings_001.md`
 - `evals/datasets/baseline_eval_set_001.jsonl`
 - `evals/results/scored/model_eval_001_scored.jsonl`
-- Failed cases: `injection_001`, `injection_005`
+- Models: `qwen2.5:3b`, `llama3.2:3b`, `gemma3:1b`
+- Cases: `injection_001` through `injection_005`
 
 Acceptance criteria:
 
-- [ ] Add hardened system/developer instruction pattern.
-- [ ] Rerun `injection_001` and `injection_005`.
-- [ ] Compare baseline vs mitigated behavior.
-- [ ] Document whether mitigation reduced risk.
-- [ ] Update the finding with mitigation validation results.
+- [x] Add hardened system/developer instruction pattern.
+- [x] Rerun all 5 prompt-injection cases across all 3 models.
+- [x] Compare baseline vs mitigated behavior.
+- [x] Record whether previous failures were fixed.
+- [x] Identify any new regressions.
+- [x] Produce a mitigation validation report.
+- [x] Avoid claiming the system is secure based on 5 tests.
