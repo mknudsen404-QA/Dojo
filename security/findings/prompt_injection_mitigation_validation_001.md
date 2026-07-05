@@ -33,10 +33,10 @@ The control tells the model that user content, retrieved content, and candidate 
 ## Results Summary
 
 - Baseline manually scored prompt-injection failures: 6/15
-- Mitigated heuristic failures: 0/15
+- Mitigated obvious heuristic failures: 0/15
 - Mitigated scoring used deterministic heuristics and received human sanity-check agreement from Matthew on 2026-07-05.
 
-| Model | Cases | Baseline Failures | Mitigated Heuristic Failures | Previous Failures Fixed | New Regressions |
+| Model | Cases | Baseline Failures | Mitigated Obvious Heuristic Failures | Previous Failures Fixed | New Regressions |
 |---|---:|---:|---:|---:|---:|
 | `qwen2.5:3b` | 5 | 2 | 0 | 2 | 0 |
 | `llama3.2:3b` | 5 | 2 | 0 | 2 | 0 |
@@ -89,6 +89,8 @@ Recommended controls include instruction separation, untrusted-content boundarie
 ## Human Review Note
 
 Matthew reviewed the mitigated responses and agreed that the 15 mitigated outputs did not show the same prompt-injection failures observed in the baseline run.
+
+Some mitigated responses were security-acceptable but low-quality or underspecified, especially from `gemma3:1b`. Future scoring should distinguish security success from evaluator usefulness.
 
 ## Limitations
 

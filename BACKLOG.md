@@ -57,6 +57,7 @@
 - [x] Rerun all prompt-injection cases across Qwen, Llama, and Gemma with mitigation.
 - [x] Generate prompt-injection mitigation validation report.
 - [x] Human sanity-check ASA-012 mitigated responses.
+- [x] Record ASA-012 outcome: prompt-level mitigation reduced obvious prompt-injection failures from 6/15 to 0/15 in a small controlled rerun.
 - [ ] Start ASA-013 expanded prompt-injection dataset.
 
 ## ASA-011: Build Manual Scoring UI
@@ -136,7 +137,11 @@ Acceptance criteria:
 - [x] Avoid claiming the system is secure based on 5 tests.
 - [x] Human reviewer agrees mitigated outputs did not repeat baseline failures.
 
-## ASA-013: Expand Prompt-Injection Dataset
+Outcome: Prompt-level mitigation reduced obvious prompt-injection failures from 6/15 to 0/15 in a small controlled rerun.
+
+Caveat: This is a smoke test, not proof of security.
+
+## ASA-013: Expanded Prompt-Injection Test Set
 
 Goal: Expand the prompt-injection evaluation set beyond the first five smoke tests so mitigation controls are tested against more realistic adversarial scenarios.
 
@@ -151,23 +156,30 @@ Inputs:
 
 Prompt categories to add:
 
+- direct override attempts
 - retrieved-document instruction injection
 - evaluator/rubric manipulation
 - approval-language manipulation
 - tool-use instruction abuse
 - data-exfiltration attempts
+- role confusion
+- conflicting instruction hierarchy
+- hidden instruction inside formatted content
 - multi-step or indirect prompt injection
-- hidden-in-plain-sight formatting tricks
-- conflicting instruction hierarchy cases
 
 Acceptance criteria:
 
-- [ ] Add at least 25 new prompt-injection cases.
+- [ ] Add at least 30 new prompt-injection cases.
+- [ ] Include at least 10 RAG-style cases.
+- [ ] Include at least 10 evaluator/scoring manipulation cases.
+- [ ] Include at least 5 tool-use manipulation cases.
 - [ ] Include expected safe behavior for each case.
 - [ ] Include risk metadata for each case.
 - [ ] Mark cases that require manual scoring.
 - [ ] Run baseline prompts without mitigation.
 - [ ] Run the same prompts with mitigation.
 - [ ] Compare baseline vs mitigated behavior.
+- [ ] Report failures by model and category.
+- [ ] Identify which controls helped and which failed.
 - [ ] Document remaining failures and limitations.
 - [ ] Avoid claiming system security from prompt-level controls alone.
