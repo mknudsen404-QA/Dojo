@@ -47,7 +47,7 @@ Outputs:
 
 Status:
 
-- Ready for review
+- Lab 1.1 complete; Lab 1.2 partially complete; ready for Phase 2 scoring work
 
 ## Phase 2: Prompt Evaluation Basics
 

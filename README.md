@@ -79,6 +79,8 @@ The focus is to run local LLMs, capture basic behavior, compare model tradeoffs,
 - [x] Raw model comparison results captured
 - [x] Model behavior notes written
 - [x] First local model comparison report written
+- [x] Internal QA assistant model comparison written
+- [x] Scoring gap documented
 
 ## How to Work in This Repo
 

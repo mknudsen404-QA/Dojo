@@ -1,23 +1,53 @@
 # Model Card: qwen2.5:3b
 
+## Model Name
+
+Qwen 2.5 3B
+
 ## Local Tag
 
 `qwen2.5:3b`
 
-## Role In Lab
+## Quantization
 
-Recommended default model for Phase 2 prompt evaluation.
+Ollama-packaged local model. Exact quantization variant was not recorded in Phase 1.
 
-## Phase 1 Result
+## Approx Size
+
+1.9 GB
+
+## Hardware Used
+
+Mac Mini M2 with 8 GB memory.
+
+## Strengths
+
+- Completed all Phase 1 baseline prompts.
+- Practical local latency.
+- Produced useful, comparatively complete responses.
+- Best balance of quality and speed in the first comparison.
+
+## Weaknesses
+
+- Not yet scored against ground-truth answer keys.
+- Structured-output compliance has not been parser-validated.
+- Hallucination behavior has not been tested rigorously.
+
+## Latency Notes
 
 - Completed prompts: 5/5
 - Average time for completed prompts: 2.68s
 - Timeouts: 0
 
-## Notes
+## Best Use Case
 
-Strongest practical default from the Phase 1 run. Completed the baseline prompt set quickly and produced useful responses.
+Primary local model for Phase 2 prompt evaluation and internal QA-assistant testing.
 
-## Limitations
+## Risks
 
-Needs formal scoring before making stronger quality claims.
+- Plausible answers may still be wrong without source grounding or answer-key validation.
+- Quantization details need to be captured more explicitly for reproducibility.
+
+## Would I Use This For A QA Assistant?
+
+Yes, as the first local candidate to evaluate. Not yet as a production assistant.
