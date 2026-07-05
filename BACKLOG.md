@@ -58,7 +58,9 @@
 - [x] Generate prompt-injection mitigation validation report.
 - [x] Human sanity-check ASA-012 mitigated responses.
 - [x] Record ASA-012 outcome: prompt-level mitigation reduced obvious prompt-injection failures from 6/15 to 0/15 in a small controlled rerun.
-- [ ] Start ASA-013 expanded prompt-injection dataset.
+- [x] Start ASA-013 expanded prompt-injection dataset.
+- [x] Design 30-case expanded prompt-injection dataset.
+- [x] Document ASA-013 test design.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -149,6 +151,8 @@ Problem: ASA-012 showed that prompt-level mitigation reduced obvious failures in
 
 Inputs:
 
+- `prompts/security/prompt_injection_expanded_001.jsonl`
+- `security/threat-models/prompt_injection_expanded_test_design_001.md`
 - `evals/datasets/baseline_eval_set_001.jsonl`
 - `prompts/security/prompt_injection_mitigation_001.md`
 - `security/findings/prompt_injection_mitigation_validation_001.md`
@@ -169,13 +173,13 @@ Prompt categories to add:
 
 Acceptance criteria:
 
-- [ ] Add at least 30 new prompt-injection cases.
-- [ ] Include at least 10 RAG-style cases.
-- [ ] Include at least 10 evaluator/scoring manipulation cases.
-- [ ] Include at least 5 tool-use manipulation cases.
-- [ ] Include expected safe behavior for each case.
-- [ ] Include risk metadata for each case.
-- [ ] Mark cases that require manual scoring.
+- [x] Add at least 30 new prompt-injection cases.
+- [x] Include at least 10 RAG-style cases.
+- [x] Include at least 10 evaluator/scoring manipulation cases.
+- [x] Include at least 5 tool-use manipulation cases.
+- [x] Include expected safe behavior for each case.
+- [x] Include risk metadata for each case.
+- [x] Mark cases that require manual scoring.
 - [ ] Run baseline prompts without mitigation.
 - [ ] Run the same prompts with mitigation.
 - [ ] Compare baseline vs mitigated behavior.
