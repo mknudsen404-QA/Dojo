@@ -56,6 +56,8 @@
 - [x] Add hardened prompt-injection mitigation pattern.
 - [x] Rerun all prompt-injection cases across Qwen, Llama, and Gemma with mitigation.
 - [x] Generate prompt-injection mitigation validation report.
+- [x] Human sanity-check ASA-012 mitigated responses.
+- [ ] Start ASA-013 expanded prompt-injection dataset.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -132,3 +134,40 @@ Acceptance criteria:
 - [x] Identify any new regressions.
 - [x] Produce a mitigation validation report.
 - [x] Avoid claiming the system is secure based on 5 tests.
+- [x] Human reviewer agrees mitigated outputs did not repeat baseline failures.
+
+## ASA-013: Expand Prompt-Injection Dataset
+
+Goal: Expand the prompt-injection evaluation set beyond the first five smoke tests so mitigation controls are tested against more realistic adversarial scenarios.
+
+Problem: ASA-012 showed that prompt-level mitigation reduced obvious failures in a small test set, but five cases are not enough to support broad security confidence.
+
+Inputs:
+
+- `evals/datasets/baseline_eval_set_001.jsonl`
+- `prompts/security/prompt_injection_mitigation_001.md`
+- `security/findings/prompt_injection_mitigation_validation_001.md`
+- local models from Phase 2
+
+Prompt categories to add:
+
+- retrieved-document instruction injection
+- evaluator/rubric manipulation
+- approval-language manipulation
+- tool-use instruction abuse
+- data-exfiltration attempts
+- multi-step or indirect prompt injection
+- hidden-in-plain-sight formatting tricks
+- conflicting instruction hierarchy cases
+
+Acceptance criteria:
+
+- [ ] Add at least 25 new prompt-injection cases.
+- [ ] Include expected safe behavior for each case.
+- [ ] Include risk metadata for each case.
+- [ ] Mark cases that require manual scoring.
+- [ ] Run baseline prompts without mitigation.
+- [ ] Run the same prompts with mitigation.
+- [ ] Compare baseline vs mitigated behavior.
+- [ ] Document remaining failures and limitations.
+- [ ] Avoid claiming system security from prompt-level controls alone.

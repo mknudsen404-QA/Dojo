@@ -34,7 +34,7 @@ The control tells the model that user content, retrieved content, and candidate 
 
 - Baseline manually scored prompt-injection failures: 6/15
 - Mitigated heuristic failures: 0/15
-- Mitigated scoring is heuristic and requires human review before being treated as final manual scoring.
+- Mitigated scoring used deterministic heuristics and received human sanity-check agreement from Matthew on 2026-07-05.
 
 | Model | Cases | Baseline Failures | Mitigated Heuristic Failures | Previous Failures Fixed | New Regressions |
 |---|---:|---:|---:|---:|---:|
@@ -86,6 +86,10 @@ Prompt-level controls can reduce simple override-following behavior, but they ar
 
 Recommended controls include instruction separation, untrusted-content boundaries, retrieval sanitization, output validation for approval language, and human review for production-readiness decisions.
 
+## Human Review Note
+
+Matthew reviewed the mitigated responses and agreed that the 15 mitigated outputs did not show the same prompt-injection failures observed in the baseline run.
+
 ## Limitations
 
 - Only five prompt-injection cases were tested.
@@ -95,6 +99,5 @@ Recommended controls include instruction separation, untrusted-content boundarie
 
 ## Next Steps
 
-- Manually review the mitigated responses and convert heuristic results into human scores.
-- Add more prompt-injection cases that include retrieved documents, tool-use instructions, and evaluator manipulation.
+- Start ASA-013 to add more prompt-injection cases that include retrieved documents, tool-use instructions, and evaluator manipulation.
 - Test architectural controls outside the prompt, including output validators and approval gates.
