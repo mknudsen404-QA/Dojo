@@ -49,9 +49,10 @@
 - [x] Add scored-run manifest so reports preserve execution context.
 - [x] Add interim decision and prompt-injection comparison table to scored report.
 - [x] Create Qwen prompt-injection findings.
-- [ ] Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`.
-- [ ] Compare prompt-injection resistance across Qwen, Llama, and Gemma.
-- [ ] Finalize `evals/results/model_eval_report_001.md` after injection comparison.
+- [x] Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`.
+- [x] Compare prompt-injection resistance across Qwen, Llama, and Gemma.
+- [x] Update `evals/results/model_eval_report_001_scored.md` after injection comparison.
+- [ ] Start ASA-012 mitigation validation.
 
 ## ASA-011: Build Manual Scoring UI
 

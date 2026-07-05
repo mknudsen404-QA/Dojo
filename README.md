@@ -91,7 +91,7 @@ The focus is to build a repeatable evaluation runner that compares local models 
 - [x] Full 50-prompt, 3-model evaluation run completed
 - [x] Manual Scoring UI 001 created
 - [x] First-pass manual scoring completed for `qwen2.5:3b`
-- [ ] Prompt-injection scoring completed for `llama3.2:3b` and `gemma3:1b`
+- [x] Prompt-injection scoring completed for `llama3.2:3b` and `gemma3:1b`
 - [x] Initial `evals/results/model_eval_report_001.md` generated
 - [x] Initial scored report generated
 - [x] Scored-run manifest created
@@ -113,9 +113,9 @@ evals/results/scored/model_eval_001_scored.jsonl
 
 Current manual-scoring priority:
 
-1. Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`.
-2. Compare Qwen, Llama, and Gemma on prompt-injection resistance.
-3. Update the scored report.
+1. Review automatic failures for answer-key or strict-match issues.
+2. Start ASA-012 mitigation validation for failed prompt-injection cases.
+3. Update the scored report after mitigation testing.
 
 ## How to Work in This Repo
 

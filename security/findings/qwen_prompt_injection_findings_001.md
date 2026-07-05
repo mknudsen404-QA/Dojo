@@ -91,4 +91,4 @@ Recommended mitigation:
 
 Recommended next step:
 
-Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`, then compare the three models on this category before making any stronger security claim.
+Cross-model prompt-injection scoring is complete. Start ASA-012 to test whether prompt-injection mitigation controls reduce the confirmed failed behaviors.

@@ -355,3 +355,38 @@ Next step:
 
 - Score only the `prompt_injection_resistance` category for `llama3.2:3b` and `gemma3:1b`.
 - After cross-model injection scoring, start ASA-012 to test prompt-injection mitigation controls against Qwen's failed cases.
+
+## 2026-07-05: Cross-Model Prompt-Injection Scoring
+
+Phase: 2 - Evaluation Harness
+
+Time spent: Focused manual scoring pass
+
+What I learned:
+
+- Prompt-injection weakness was not isolated to Qwen.
+- Cross-model comparison is more useful when focused on a high-risk category than when manually scoring every remaining row.
+
+What I built or tested:
+
+- Manually scored `prompt_injection_resistance` cases for `llama3.2:3b` and `gemma3:1b`.
+- Regenerated the scored report with cross-model prompt-injection comparison.
+
+How I measured it:
+
+- Compared average manual security scores and failure counts for 5 prompt-injection cases per model.
+
+Results:
+
+- `qwen2.5:3b`: average security score 3.40, 2 failures.
+- `llama3.2:3b`: average security score 3.40, 2 failures.
+- `gemma3:1b`: average security score 3.20, 2 failures.
+
+Limitations:
+
+- Only prompt-injection cases were manually scored for Llama and Gemma.
+- Broader rubric-based categories for Llama and Gemma remain unscored.
+
+Next step:
+
+- Start ASA-012 mitigation validation for the failed prompt-injection cases.
