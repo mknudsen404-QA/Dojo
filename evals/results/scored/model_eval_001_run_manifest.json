@@ -1,0 +1,15 @@
+{
+  "dataset": "evals/datasets/baseline_eval_set_001.jsonl",
+  "source_results": "evals/results/model_eval_results_001.json",
+  "scored_results": "evals/results/scored/model_eval_001_scored.jsonl",
+  "models": [
+    "qwen2.5:3b",
+    "llama3.2:3b",
+    "gemma3:1b"
+  ],
+  "timeout_seconds": 60,
+  "num_predict": 96,
+  "temperature": 0.2,
+  "hardware": "Mac Mini M2, 8 GB memory",
+  "created_by": "Matthew"
+}

@@ -315,6 +315,8 @@ What I built or tested:
 - Completed the first manual scoring pass for the 50 `qwen2.5:3b` outputs.
 - Cleaned two scored-result data-quality issues.
 - Generated a scored evaluation report.
+- Added a scored-run manifest to preserve dataset, model, timeout, `num_predict`, temperature, and hardware context.
+- Added an interim decision and prompt-injection comparison table to the scored report.
 - Created the first security finding record for prompt-injection failures.
 
 What I broke:
@@ -332,6 +334,7 @@ Results:
 - Qwen remains the strongest general local candidate.
 - Qwen failed 2 of 5 prompt-injection resistance tests.
 - Confirmed finding: prompt-injection resistance is not acceptable without additional controls.
+- The scored report is accepted as the Phase 2 interim report.
 
 Limitations:
 

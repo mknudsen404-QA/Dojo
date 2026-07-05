@@ -94,6 +94,7 @@ The focus is to build a repeatable evaluation runner that compares local models 
 - [ ] Prompt-injection scoring completed for `llama3.2:3b` and `gemma3:1b`
 - [x] Initial `evals/results/model_eval_report_001.md` generated
 - [x] Initial scored report generated
+- [x] Scored-run manifest created
 - [x] First security finding recorded
 
 ## Manual Scoring

@@ -1,6 +1,6 @@
 # Model Evaluation Report 001
 
-Created: 2026-07-05T19:40:40.659641+00:00
+Created: 2026-07-05T19:54:47.427384+00:00
 
 ## Scope
 
@@ -8,14 +8,23 @@ This report summarizes a repeatable local evaluation run. It is not a production
 
 ## Run Configuration
 
-- Dataset: `unknown; loaded from scored JSONL`
-- Source results: `evals/results/scored/model_eval_001_scored.jsonl`
+- Dataset: `evals/datasets/baseline_eval_set_001.jsonl`
+- Source results: `evals/results/model_eval_results_001.json`
+- Scored results: `evals/results/scored/model_eval_001_scored.jsonl`
 - Models: `qwen2.5:3b`, `llama3.2:3b`, `gemma3:1b`
 - Cases: 50
 - Results: 150
-- Timeout: unknown seconds
-- `num_predict`: unknown
-- Temperature: unknown
+- Timeout: 60 seconds
+- `num_predict`: 96
+- Temperature: 0.2
+- Hardware: Mac Mini M2, 8 GB memory
+- Created by: Matthew
+
+## Interim Decision
+
+`qwen2.5:3b` remains the leading local QA-assistant candidate based on completed manual scoring.
+
+However, it should not be considered safe for evaluator, approval, or production-readiness workflows without prompt-injection controls. The model failed 2 of 5 prompt-injection resistance cases during manual scoring.
 
 ## Model Summary
 
@@ -54,20 +63,28 @@ This report summarizes a repeatable local evaluation run. It is not a production
 | `llama3.2:3b` | 0/50 | n/a | n/a | n/a | n/a |
 | `gemma3:1b` | 0/50 | n/a | n/a | n/a | n/a |
 
-## Manual Scoring Summary By Category
+## Manual Scoring Summary By Model And Category
 
-| Category | Fully Scored | Correctness | Instruction | Hallucination | Security |
-|---|---:|---:|---:|---:|---:|
-| `code_understanding` | 5/15 | 4.80 | 5.00 | 5.00 | 5.00 |
-| `factual_accuracy` | 5/15 | 5.00 | 5.00 | 5.00 | 5.00 |
-| `hallucination_trap` | 5/15 | 5.00 | 5.00 | 5.00 | 5.00 |
-| `instruction_following` | 5/15 | 5.00 | 5.00 | 5.00 | 5.00 |
-| `prompt_injection_resistance` | 5/15 | 3.40 | 3.40 | 5.00 | 3.40 |
-| `qa_test_case_generation` | 5/15 | 4.60 | 4.80 | 5.00 | 5.00 |
-| `reasoning` | 5/15 | 4.20 | 4.80 | 4.60 | 5.00 |
-| `refusal_behavior` | 5/15 | 5.00 | 5.00 | 5.00 | 5.00 |
-| `summarization` | 5/15 | 5.00 | 5.00 | 5.00 | 5.00 |
-| `uncertainty_handling` | 5/15 | 5.00 | 5.00 | 5.00 | 5.00 |
+| Model | Category | Fully Scored | Correctness | Instruction | Hallucination | Security |
+|---|---|---:|---:|---:|---:|---:|
+| `qwen2.5:3b` | `code_understanding` | 5/5 | 4.80 | 5.00 | 5.00 | 5.00 |
+| `qwen2.5:3b` | `factual_accuracy` | 5/5 | 5.00 | 5.00 | 5.00 | 5.00 |
+| `qwen2.5:3b` | `hallucination_trap` | 5/5 | 5.00 | 5.00 | 5.00 | 5.00 |
+| `qwen2.5:3b` | `instruction_following` | 5/5 | 5.00 | 5.00 | 5.00 | 5.00 |
+| `qwen2.5:3b` | `prompt_injection_resistance` | 5/5 | 3.40 | 3.40 | 5.00 | 3.40 |
+| `qwen2.5:3b` | `qa_test_case_generation` | 5/5 | 4.60 | 4.80 | 5.00 | 5.00 |
+| `qwen2.5:3b` | `reasoning` | 5/5 | 4.20 | 4.80 | 4.60 | 5.00 |
+| `qwen2.5:3b` | `refusal_behavior` | 5/5 | 5.00 | 5.00 | 5.00 | 5.00 |
+| `qwen2.5:3b` | `summarization` | 5/5 | 5.00 | 5.00 | 5.00 | 5.00 |
+| `qwen2.5:3b` | `uncertainty_handling` | 5/5 | 5.00 | 5.00 | 5.00 | 5.00 |
+
+## Prompt Injection Comparison
+
+| Model | Prompt Injection Cases Scored | Avg Security Score | Failures | Notes |
+|---|---:|---:|---:|---|
+| `qwen2.5:3b` | 5/5 | 3.40 | 2 | Failures: `injection_001`, `injection_005` |
+| `llama3.2:3b` | 0/5 | TBD | TBD | Pending manual scoring |
+| `gemma3:1b` | 0/5 | TBD | TBD | Pending manual scoring |
 
 ## Sample Automatic Failures
 
