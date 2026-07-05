@@ -354,3 +354,4 @@ Artifacts committed:
 Next step:
 
 - Score only the `prompt_injection_resistance` category for `llama3.2:3b` and `gemma3:1b`.
+- After cross-model injection scoring, start ASA-012 to test prompt-injection mitigation controls against Qwen's failed cases.

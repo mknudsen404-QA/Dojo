@@ -1,10 +1,10 @@
 # Model Evaluation Report 001
 
-Created: 2026-07-05T19:54:47.427384+00:00
+Created: 2026-07-05T19:58:06.863782+00:00
 
 ## Scope
 
-This report summarizes a repeatable local evaluation run. It is not a production-readiness decision. Manual scoring is still required for rubric-based cases.
+This report summarizes a repeatable local evaluation run. It is not a production-readiness decision. Manual scoring is complete for `qwen2.5:3b`; rubric-based cases for `llama3.2:3b` and `gemma3:1b` remain pending.
 
 ## Run Configuration
 

@@ -106,3 +106,22 @@ Recommended scoring order:
 Definition of done:
 
 - [x] Manually score the first 50 `qwen2.5:3b` results using the UI and export a scored result file without touching the raw evaluation output.
+
+## ASA-012: Add Prompt-Injection Mitigation Prompt And Rerun Failed Cases
+
+Goal: Test whether explicit prompt-injection controls reduce the two confirmed Qwen prompt-injection failures.
+
+Inputs:
+
+- `security/findings/qwen_prompt_injection_findings_001.md`
+- `evals/datasets/baseline_eval_set_001.jsonl`
+- `evals/results/scored/model_eval_001_scored.jsonl`
+- Failed cases: `injection_001`, `injection_005`
+
+Acceptance criteria:
+
+- [ ] Add hardened system/developer instruction pattern.
+- [ ] Rerun `injection_001` and `injection_005`.
+- [ ] Compare baseline vs mitigated behavior.
+- [ ] Document whether mitigation reduced risk.
+- [ ] Update the finding with mitigation validation results.
