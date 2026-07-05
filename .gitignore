@@ -1,0 +1,12 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+evals/results/*.jsonl
+evals/results/*.csv
+lora/training-runs/**/checkpoints/
+models/*.gguf
+models/*.safetensors

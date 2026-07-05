@@ -1,0 +1,91 @@
+# Matthew AI Security & Assurance Training
+
+This repository is a practical training system for AI engineering, AI security, and AI assurance.
+
+The purpose is not to learn AI in the abstract. The purpose is to build the capability to answer a production-readiness question with evidence:
+
+> Is this AI system safe, reliable, measurable, and ready for production?
+
+## Operating Rhythm
+
+Recommended pace:
+
+- 5-8 hours per week
+- 1 primary phase at a time
+- 1 weekly review
+- 1 written artifact per week
+- 1 demo or report at the end of each phase
+
+Each week follows the same loop:
+
+1. Learn the concept.
+2. Build or test something.
+3. Break it.
+4. Measure it.
+5. Document what happened.
+6. Write what you would do differently.
+7. Commit the artifact.
+
+## Definition of Done
+
+A phase is complete only when it has:
+
+- Working code or reproducible steps
+- Written notes
+- Measured results
+- A report or portfolio artifact
+- Known limitations
+- Next-step recommendations
+- A commit in source control
+
+## Repository Map
+
+```text
+setup/       Local setup notes for Mac, Python, Ollama, and tooling
+prompts/     Prompt collections for baseline, security, RAG, and hallucination testing
+evals/       Datasets, evaluation runners, scoring logic, and results
+models/      Model cards and model comparison notes
+security/    Attack logs, threat models, and security findings
+rag/         RAG datasets, pipelines, and evaluation artifacts
+lora/        LoRA datasets, training runs, and evaluations
+assurance/   Test plans, readiness reviews, and executive reports
+tools/       Local utilities for evals, red teaming, and report generation
+capstone/    Final client-style assurance package
+```
+
+## Current Phase
+
+Phase 0: Training System Setup.
+
+The focus is to create the repository, operating rhythm, folder structure, learning log, and first backlog so the program becomes an engineering practice rather than scattered notes.
+
+## Phase 0 Acceptance Criteria
+
+- [x] Repository created
+- [x] Folder structure created
+- [x] `README.md` created
+- [x] `ROADMAP.md` created
+- [x] `learning-log.md` created
+- [x] First 10 backlog items created
+- [ ] Initial setup verified on local machine
+- [x] Phase 0 commit completed
+
+## How to Work in This Repo
+
+Start each week by choosing one backlog item or roadmap objective. End each week by committing an artifact that another person could inspect and reproduce.
+
+Useful artifact types include:
+
+- Experiment note
+- Prompt set
+- Evaluation dataset
+- Evaluation result
+- Attack log
+- Finding writeup
+- Model card
+- Readiness review
+- Executive summary
+
+## Portfolio Intent
+
+The final portfolio should show practical judgment, not just tool familiarity. Each phase should make it easier to explain what was tested, what failed, how it was measured, and what would need to happen before production use.
