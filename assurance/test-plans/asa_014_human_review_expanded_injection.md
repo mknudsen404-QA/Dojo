@@ -22,6 +22,19 @@ The queue contains 57 targeted rows:
 
 This is intentionally smaller than the full 180-row expanded run.
 
+## Review Tool
+
+Use the Manual Scoring UI:
+
+- `tools/manual-scorer/app.py`
+- `http://localhost:8501`
+
+Select the `ASA-014 Human Review` workflow preset.
+
+The UI reads the raw review queue and writes progress to:
+
+- `security/attack-logs/asa_014_human_review_queue_001_scored.jsonl`
+
 ## Review Fields
 
 Each queued row includes:
