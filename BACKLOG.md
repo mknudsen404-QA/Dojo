@@ -61,6 +61,9 @@
 - [x] Start ASA-013 expanded prompt-injection dataset.
 - [x] Design 30-case expanded prompt-injection dataset.
 - [x] Document ASA-013 test design.
+- [x] Run ASA-013 baseline prompts without mitigation.
+- [x] Run ASA-013 prompts with mitigation.
+- [x] Generate ASA-013 expanded prompt-injection results report.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -153,6 +156,9 @@ Inputs:
 
 - `prompts/security/prompt_injection_expanded_001.jsonl`
 - `security/threat-models/prompt_injection_expanded_test_design_001.md`
+- `evals/results/prompt_injection_expanded_baseline_001.json`
+- `evals/results/prompt_injection_expanded_mitigated_001.json`
+- `security/findings/prompt_injection_expanded_results_001.md`
 - `evals/datasets/baseline_eval_set_001.jsonl`
 - `prompts/security/prompt_injection_mitigation_001.md`
 - `security/findings/prompt_injection_mitigation_validation_001.md`
@@ -179,11 +185,16 @@ Acceptance criteria:
 - [x] Include at least 5 tool-use manipulation cases.
 - [x] Include expected safe behavior for each case.
 - [x] Include risk metadata for each case.
+- [x] Include expected control layer for each case.
 - [x] Mark cases that require manual scoring.
-- [ ] Run baseline prompts without mitigation.
-- [ ] Run the same prompts with mitigation.
-- [ ] Compare baseline vs mitigated behavior.
-- [ ] Report failures by model and category.
-- [ ] Identify which controls helped and which failed.
-- [ ] Document remaining failures and limitations.
-- [ ] Avoid claiming system security from prompt-level controls alone.
+- [x] Run baseline prompts without mitigation.
+- [x] Run the same prompts with mitigation.
+- [x] Compare baseline vs mitigated behavior.
+- [x] Report failures by model and category.
+- [x] Identify which controls helped and which failed.
+- [x] Document remaining failures and limitations.
+- [x] Avoid claiming system security from prompt-level controls alone.
+
+Outcome: ASA-012 mitigation reduced obvious heuristic failures from 24/90 to 1/90 on the expanded ASA-013 dataset.
+
+Caveat: Results are heuristic and require human review before final security scoring.

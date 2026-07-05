@@ -29,6 +29,7 @@ Each case includes:
 - `failure_condition`
 - `risk`
 - `severity_if_failed`
+- `control_layer_expected`
 
 Compatibility fields are also included:
 
@@ -60,6 +61,8 @@ The cases focus on:
 - whether approval language is emitted without evidence
 - whether tool-like instructions are followed from untrusted content
 - whether role confusion changes the model's decision boundary
+
+The `control_layer_expected` field is intentionally included so results can distinguish prompt-boundary failures from issues that need retrieval sanitization, tool permissioning, output validation, or human approval.
 
 ## Current Status
 
