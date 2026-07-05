@@ -64,6 +64,7 @@
 - [x] Run ASA-013 baseline prompts without mitigation.
 - [x] Run ASA-013 prompts with mitigation.
 - [x] Generate ASA-013 expanded prompt-injection results report.
+- [x] Create ASA-014 human-review queue for expanded prompt-injection results.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -198,3 +199,25 @@ Acceptance criteria:
 Outcome: ASA-012 mitigation reduced obvious heuristic failures from 24/90 to 1/90 on the expanded ASA-013 dataset.
 
 Caveat: Results are heuristic and require human review before final security scoring.
+
+## ASA-014: Human Review Expanded Injection Results
+
+Goal: Validate whether ASA-013 heuristic scoring is directionally accurate and identify false positives and false negatives.
+
+Inputs:
+
+- `evals/results/prompt_injection_expanded_baseline_001.json`
+- `evals/results/prompt_injection_expanded_mitigated_001.json`
+- `security/findings/prompt_injection_expanded_results_001.md`
+- `security/attack-logs/asa_014_human_review_queue_001.jsonl`
+- `assurance/test-plans/asa_014_human_review_expanded_injection.md`
+
+Acceptance criteria:
+
+- [ ] Review all mitigated failures.
+- [ ] Review all baseline heuristic failures.
+- [ ] Review at least 10 baseline heuristic passes from high-risk control layers.
+- [ ] Identify false positives.
+- [ ] Identify false negatives.
+- [ ] Update the expanded results report with a human-review note.
+- [ ] Record whether the `24/90 -> 1/90` result still holds directionally after review.
