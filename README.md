@@ -89,8 +89,23 @@ The focus is to build a repeatable evaluation runner that compares local models 
 - [x] Manual scoring rubric created
 - [x] Markdown report generator created
 - [x] Full 50-prompt, 3-model evaluation run completed
+- [x] Manual Scoring UI 001 created
 - [ ] Manual scoring completed
 - [x] Initial `evals/results/model_eval_report_001.md` generated
+
+## Manual Scoring
+
+Run the local scoring UI:
+
+```bash
+streamlit run tools/manual-scorer/app.py
+```
+
+The raw evaluation result remains unchanged. Scored progress is written to:
+
+```text
+evals/results/scored/model_eval_001_scored.jsonl
+```
 
 ## How to Work in This Repo
 

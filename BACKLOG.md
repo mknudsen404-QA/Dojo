@@ -41,5 +41,61 @@
 - [x] Build markdown report generator.
 - [x] Run the Phase 2 baseline dataset against `qwen2.5:3b`, `llama3.2:3b`, and `gemma3:1b`.
 - [x] Generate initial `evals/results/model_eval_report_001.md`.
+- [x] Create ASA-011 ticket for manual scoring UI.
+- [x] Build Manual Scoring UI 001.
 - [ ] Manually score the first 50 outputs.
 - [ ] Finalize `evals/results/model_eval_report_001.md` after manual scoring.
+
+## ASA-011: Build Manual Scoring UI
+
+Goal: Create a lightweight local UI that makes manual scoring of LLM evaluation results faster, more consistent, and less error-prone.
+
+Problem: The evaluation runner produces structured result files, but rubric-based categories still require human review. Manually editing JSON or markdown is slow and increases the risk of inconsistent scoring.
+
+Inputs:
+
+- `evals/results/*.json`
+- `evals/results/*.jsonl`
+- `evals/scoring/manual-scoring-rubric.md`
+- model responses
+- expected answers
+- automatic scoring results
+
+Outputs:
+
+- scored results file
+- updated manual scoring fields
+- scoring progress summary
+- model/category score summaries
+
+MVP features:
+
+- [x] Load an evaluation result file.
+- [x] Filter by model.
+- [x] Filter by category.
+- [x] Filter by unscored results.
+- [x] Filter by automatic pass/fail.
+- [x] View the original prompt.
+- [x] View the expected answer, if present.
+- [x] View the model response.
+- [x] View automatic scoring result.
+- [x] Enter manual scores.
+- [x] Add notes.
+- [x] Mark a result as scored, needs review, answer key issue, or scorer unsure.
+- [x] Save progress without overwriting raw results.
+- [x] Export scored results to a new file.
+
+Data safety rule:
+
+- [x] Raw evaluation results must remain immutable.
+- [x] The scorer writes to `evals/results/scored/model_eval_001_scored.jsonl`.
+
+Recommended scoring order:
+
+1. Score all 50 `qwen2.5:3b` outputs.
+2. Score manual-only categories across all models.
+3. Review automatic failures manually.
+
+Definition of done:
+
+- [ ] Manually score the first 50 `qwen2.5:3b` results using the UI and export a scored result file without touching the raw evaluation output.

@@ -247,3 +247,52 @@ Artifacts committed:
 Next step:
 
 - Manually score the first 50 outputs for `qwen2.5:3b`, then update `model_eval_report_001.md`.
+
+## 2026-07-05: ASA-011 Manual Scoring UI
+
+Phase: 2 - Evaluation Harness
+
+Time spent: Manual scoring workflow setup
+
+What I learned:
+
+- Manual scoring needs its own tool because editing JSON directly is slow and error-prone.
+- The raw evaluation result should remain immutable so scored results can be audited separately from model outputs.
+- The first scoring pass should focus on `qwen2.5:3b` because it is the leading candidate from Phase 1 and the first Phase 2 automated run.
+
+What I built or tested:
+
+- Created `tools/manual-scorer/app.py`.
+- Added filters for model, category, manual status, and automatic score status.
+- Added manual scoring fields and review status flags.
+- Added separate scored-output export to `evals/results/scored/model_eval_001_scored.jsonl`.
+
+What I broke:
+
+- Nothing yet.
+
+How I measured it:
+
+- Pending UI launch and first scored Qwen pass.
+
+Results:
+
+- Manual Scoring UI 001 is ready for local scoring.
+
+Limitations:
+
+- Streamlit must be installed locally.
+- No LLM-assisted scoring is included by design.
+- Summary dashboards are still a stretch goal.
+
+What I would do differently:
+
+- Add keyboard shortcuts after the first real scoring session reveals the repetitive motions.
+
+Artifacts committed:
+
+- Pending ASA-011 commit.
+
+Next step:
+
+- Use the UI to manually score all 50 `qwen2.5:3b` outputs.
