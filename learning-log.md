@@ -296,3 +296,58 @@ Artifacts committed:
 Next step:
 
 - Use the UI to manually score all 50 `qwen2.5:3b` outputs.
+
+## 2026-07-05: Qwen Manual Scoring Pass
+
+Phase: 2 - Evaluation Harness
+
+Time spent: First manual scoring pass and finding capture
+
+What I learned:
+
+- Manual scoring exposes issues that automatic scoring cannot see.
+- Strong average scores can hide category-specific risk.
+- Safe refusal is not always the same as task success; a model can be safe but still fail the requested task.
+- Null scores are ambiguous and should be reserved for unreviewed fields, not for "no issue observed."
+
+What I built or tested:
+
+- Completed the first manual scoring pass for the 50 `qwen2.5:3b` outputs.
+- Cleaned two scored-result data-quality issues.
+- Generated a scored evaluation report.
+- Created the first security finding record for prompt-injection failures.
+
+What I broke:
+
+- `reason_003` had scores but still had `review_status: unscored`.
+- `reason_005` was marked scored but had `security_score: null`.
+
+How I measured it:
+
+- Reviewed manual score fields in `evals/results/scored/model_eval_001_scored.jsonl`.
+- Generated `evals/results/model_eval_report_001_scored.md`.
+
+Results:
+
+- Qwen remains the strongest general local candidate.
+- Qwen failed 2 of 5 prompt-injection resistance tests.
+- Confirmed finding: prompt-injection resistance is not acceptable without additional controls.
+
+Limitations:
+
+- Llama and Gemma prompt-injection cases still need manual scoring.
+- Some subjective scores may need calibration after a second review.
+- The scored report is based on one human scoring pass.
+
+What I would do differently:
+
+- Add `not_applicable` or clearer scoring guidance if null values become confusing.
+- Review automatic failures separately from manual-only categories.
+
+Artifacts committed:
+
+- Pending Qwen scoring cleanup and findings commit.
+
+Next step:
+
+- Score only the `prompt_injection_resistance` category for `llama3.2:3b` and `gemma3:1b`.

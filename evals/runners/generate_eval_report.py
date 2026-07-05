@@ -7,8 +7,17 @@ import argparse
 import json
 import statistics
 from collections import defaultdict
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+
+MANUAL_FIELDS = [
+    "correctness_score",
+    "instruction_following_score",
+    "hallucination_score",
+    "security_score",
+]
 
 
 def pct(numerator: int, denominator: int) -> str:
@@ -18,7 +27,44 @@ def pct(numerator: int, denominator: int) -> str:
 
 
 def load_results(path: Path) -> dict[str, Any]:
+    if path.suffix == ".jsonl":
+        results = [
+            json.loads(line)
+            for line in path.read_text(encoding="utf-8").splitlines()
+            if line.strip()
+        ]
+        models = list(dict.fromkeys(row["model"] for row in results))
+        return {
+            "run_config": {
+                "created_at": datetime.now(timezone.utc).isoformat(),
+                "dataset": "unknown; loaded from scored JSONL",
+                "models": models,
+                "timeout_seconds": "unknown",
+                "num_predict": "unknown",
+                "temperature": "unknown",
+                "case_count": len({row["case_id"] for row in results}),
+                "result_count": len(results),
+                "source_results": str(path),
+            },
+            "results": results,
+        }
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def is_manually_scored(row: dict[str, Any]) -> bool:
+    scores = row.get("manual_scores", {})
+    return all(scores.get(field) is not None for field in MANUAL_FIELDS)
+
+
+def average_manual(rows: list[dict[str, Any]], field: str) -> str:
+    values = [
+        row.get("manual_scores", {}).get(field)
+        for row in rows
+        if row.get("manual_scores", {}).get(field) is not None
+    ]
+    if not values:
+        return "n/a"
+    return f"{statistics.mean(values):.2f}"
 
 
 def summarize_by_model(results: list[dict[str, Any]]) -> list[str]:
@@ -38,11 +84,7 @@ def summarize_by_model(results: list[dict[str, Any]]) -> list[str]:
             for row in ok_rows
             if row.get("tokens_per_second") is not None
         ]
-        manual_done = sum(
-            1
-            for row in rows
-            if row.get("manual_scores", {}).get("correctness_score") is not None
-        )
+        manual_done = sum(1 for row in rows if is_manually_scored(row))
         lines.append(
             "| "
             + " | ".join(
@@ -56,6 +98,53 @@ def summarize_by_model(results: list[dict[str, Any]]) -> list[str]:
                 ]
             )
             + " |"
+        )
+    return lines
+
+
+def summarize_manual_by_model(results: list[dict[str, Any]]) -> list[str]:
+    lines = [
+        "| Model | Fully Scored | Correctness | Instruction | Hallucination | Security |",
+        "|---|---:|---:|---:|---:|---:|",
+    ]
+    models = list(dict.fromkeys(row["model"] for row in results))
+    for model in models:
+        rows = [row for row in results if row["model"] == model]
+        scored = [row for row in rows if is_manually_scored(row)]
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    f"`{model}`",
+                    f"{len(scored)}/{len(rows)}",
+                    average_manual(scored, "correctness_score"),
+                    average_manual(scored, "instruction_following_score"),
+                    average_manual(scored, "hallucination_score"),
+                    average_manual(scored, "security_score"),
+                ]
+            )
+            + " |"
+        )
+    return lines
+
+
+def summarize_manual_by_category(results: list[dict[str, Any]]) -> list[str]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for row in results:
+        grouped[row["category"]].append(row)
+    lines = [
+        "| Category | Fully Scored | Correctness | Instruction | Hallucination | Security |",
+        "|---|---:|---:|---:|---:|---:|",
+    ]
+    for category in sorted(grouped):
+        rows = grouped[category]
+        scored = [row for row in rows if is_manually_scored(row)]
+        lines.append(
+            f"| `{category}` | {len(scored)}/{len(rows)} | "
+            f"{average_manual(scored, 'correctness_score')} | "
+            f"{average_manual(scored, 'instruction_following_score')} | "
+            f"{average_manual(scored, 'hallucination_score')} | "
+            f"{average_manual(scored, 'security_score')} |"
         )
     return lines
 
@@ -129,6 +218,7 @@ def main() -> int:
         "## Run Configuration",
         "",
         f"- Dataset: `{config['dataset']}`",
+        f"- Source results: `{config.get('source_results', args.results)}`",
         f"- Models: {', '.join(f'`{model}`' for model in config['models'])}",
         f"- Cases: {config['case_count']}",
         f"- Results: {config['result_count']}",
@@ -150,6 +240,14 @@ def main() -> int:
         f"- Auto-scored pass rate: {pct(len(auto_passes), len(auto_rows))}",
         "- Rubric-scored rows require manual review using `evals/scoring/manual-scoring-rubric.md`.",
         "",
+        "## Manual Scoring Summary By Model",
+        "",
+        *summarize_manual_by_model(results),
+        "",
+        "## Manual Scoring Summary By Category",
+        "",
+        *summarize_manual_by_category(results),
+        "",
         "## Sample Automatic Failures",
         "",
         *sample_failures(results),
@@ -168,7 +266,7 @@ def main() -> int:
         "",
         "## Limitations",
         "",
-        "- Manual rubric scoring is not complete.",
+        "- Manual rubric scoring may be incomplete unless all rows show manual scores.",
         "- Exact-match checks are intentionally strict and may fail otherwise acceptable explanations.",
         "- JSON-schema checks only validate required top-level keys, not semantic quality.",
         "- The dataset is an initial baseline and is not statistically representative.",
@@ -176,10 +274,10 @@ def main() -> int:
         "",
         "## Next Steps",
         "",
-        "- Manually score the first 50 outputs for the leading model.",
-        "- Add category-specific scoring guidance for hallucination and security cases.",
-        "- Expand exact-match and JSON-schema scoring where objective checks are possible.",
-        "- Compare scored results for `qwen2.5:3b`, `llama3.2:3b`, and `gemma3:1b`.",
+        "- Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`.",
+        "- Compare prompt-injection resistance across Qwen, Llama, and Gemma.",
+        "- Review automatic failures manually for true model failures, answer-key issues, and overly strict exact-match checks.",
+        "- Update this report after cross-model prompt-injection scoring is complete.",
         "",
     ]
     output_path = Path(args.output)

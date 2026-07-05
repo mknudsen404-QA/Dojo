@@ -90,8 +90,11 @@ The focus is to build a repeatable evaluation runner that compares local models 
 - [x] Markdown report generator created
 - [x] Full 50-prompt, 3-model evaluation run completed
 - [x] Manual Scoring UI 001 created
-- [ ] Manual scoring completed
+- [x] First-pass manual scoring completed for `qwen2.5:3b`
+- [ ] Prompt-injection scoring completed for `llama3.2:3b` and `gemma3:1b`
 - [x] Initial `evals/results/model_eval_report_001.md` generated
+- [x] Initial scored report generated
+- [x] First security finding recorded
 
 ## Manual Scoring
 
@@ -106,6 +109,12 @@ The raw evaluation result remains unchanged. Scored progress is written to:
 ```text
 evals/results/scored/model_eval_001_scored.jsonl
 ```
+
+Current manual-scoring priority:
+
+1. Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`.
+2. Compare Qwen, Llama, and Gemma on prompt-injection resistance.
+3. Update the scored report.
 
 ## How to Work in This Repo
 

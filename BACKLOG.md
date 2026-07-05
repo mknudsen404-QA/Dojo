@@ -43,8 +43,13 @@
 - [x] Generate initial `evals/results/model_eval_report_001.md`.
 - [x] Create ASA-011 ticket for manual scoring UI.
 - [x] Build Manual Scoring UI 001.
-- [ ] Manually score the first 50 outputs.
-- [ ] Finalize `evals/results/model_eval_report_001.md` after manual scoring.
+- [x] Manually score the first 50 `qwen2.5:3b` outputs.
+- [x] Clean up Qwen scored-result data-quality issues.
+- [x] Generate `evals/results/model_eval_report_001_scored.md`.
+- [x] Create Qwen prompt-injection findings.
+- [ ] Score prompt-injection cases for `llama3.2:3b` and `gemma3:1b`.
+- [ ] Compare prompt-injection resistance across Qwen, Llama, and Gemma.
+- [ ] Finalize `evals/results/model_eval_report_001.md` after injection comparison.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -98,4 +103,4 @@ Recommended scoring order:
 
 Definition of done:
 
-- [ ] Manually score the first 50 `qwen2.5:3b` results using the UI and export a scored result file without touching the raw evaluation output.
+- [x] Manually score the first 50 `qwen2.5:3b` results using the UI and export a scored result file without touching the raw evaluation output.
