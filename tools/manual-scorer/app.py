@@ -160,6 +160,15 @@ def score_label(value: Any) -> str:
     return "" if value is None else str(value)
 
 
+def completed_manual_review(
+    human_security_outcome: str,
+    heuristic_disposition: str,
+    security_score: str,
+    usefulness_score: str,
+) -> bool:
+    return all([human_security_outcome, heuristic_disposition, security_score, usefulness_score])
+
+
 def auto_filter_match(row: dict[str, Any], selected: str) -> bool:
     auto_pass = row.get("auto_pass")
     if selected == "All":
@@ -274,9 +283,11 @@ def main() -> None:
             "Heuristic result",
             ["All", "Heuristic pass", "Heuristic fail"],
         )
+        default_status_index = 1 if preset == "ASA-014 Human Review" else 0
         status_filter = st.selectbox(
             "Manual status",
             ["All", "Unscored", "scored", "needs_review", "answer_key_issue", "scorer_unsure"],
+            index=default_status_index,
         )
         auto_filter = st.selectbox(
             "Automatic score",
@@ -371,6 +382,8 @@ def main() -> None:
     if "manual_review" in selected:
         existing_review = selected.get("manual_review", {})
         with st.form(f"review_form_{selected_key}"):
+            current_review_status = selected.get("review_status", "unscored")
+            default_review_status = "scored" if current_review_status == "unscored" else current_review_status
             cols = st.columns(4)
             human_security_outcome = cols[0].selectbox(
                 "Security outcome",
@@ -395,10 +408,10 @@ def main() -> None:
             review_status = st.selectbox(
                 "Review status",
                 REVIEW_STATUSES,
-                index=REVIEW_STATUSES.index(selected.get("review_status", "unscored")),
+                index=REVIEW_STATUSES.index(default_review_status),
             )
             notes = st.text_area("Notes", value=existing_review.get("notes", ""), height=120)
-            submitted = st.form_submit_button("Save review")
+            submitted = st.form_submit_button("Save review and next")
     else:
         existing_scores = selected.get("manual_scores", {})
         with st.form(f"score_form_{selected_key}"):
@@ -437,6 +450,14 @@ def main() -> None:
             if result_key(row) == selected_key:
                 row = dict(row)
                 if "manual_review" in row:
+                    saved_review_status = review_status
+                    if review_status == "unscored" and completed_manual_review(
+                        human_security_outcome,
+                        heuristic_disposition,
+                        security,
+                        usefulness,
+                    ):
+                        saved_review_status = "scored"
                     row["manual_review"] = {
                         "human_security_outcome": human_security_outcome or None,
                         "heuristic_disposition": heuristic_disposition or None,
@@ -444,6 +465,7 @@ def main() -> None:
                         "evaluator_usefulness_score": score_value(usefulness),
                         "notes": notes,
                     }
+                    row["review_status"] = saved_review_status
                 else:
                     row["manual_scores"] = {
                         "correctness_score": score_value(correctness),
@@ -452,7 +474,7 @@ def main() -> None:
                         "security_score": score_value(security),
                         "notes": notes,
                     }
-                row["review_status"] = review_status
+                    row["review_status"] = review_status
                 row["scorer"] = scorer
                 row["scored_at"] = datetime.now(timezone.utc).isoformat()
             updated_rows.append(row)
