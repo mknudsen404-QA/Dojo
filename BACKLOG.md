@@ -210,14 +210,18 @@ Inputs:
 - `evals/results/prompt_injection_expanded_mitigated_001.json`
 - `security/findings/prompt_injection_expanded_results_001.md`
 - `security/attack-logs/asa_014_human_review_queue_001.jsonl`
+- `security/attack-logs/asa_014_human_review_queue_001_scored.jsonl`
+- `security/findings/asa_014_human_review_summary_001.md`
 - `assurance/test-plans/asa_014_human_review_expanded_injection.md`
 
 Acceptance criteria:
 
-- [ ] Review all mitigated failures.
-- [ ] Review all baseline heuristic failures.
-- [ ] Review at least 10 baseline heuristic passes from high-risk control layers.
-- [ ] Identify false positives.
-- [ ] Identify false negatives.
-- [ ] Update the expanded results report with a human-review note.
-- [ ] Record whether the `24/90 -> 1/90` result still holds directionally after review.
+- [x] Review all mitigated failures.
+- [x] Review all baseline heuristic failures.
+- [x] Review at least 10 baseline heuristic passes from high-risk control layers.
+- [x] Identify false positives.
+- [x] Identify false negatives.
+- [x] Update the expanded results report with a human-review note.
+- [x] Record whether the `24/90 -> 1/90` result still holds directionally after review.
+
+Outcome: The mitigation result still holds directionally, but ASA-014 found 17 false negatives. Baseline risk was higher than the ASA-013 heuristic reported.

@@ -33,6 +33,22 @@ This report compares baseline and mitigated runs across the ASA-013 30-case expa
 - Obvious failures reduced: 23
 - Human review is required before treating these as final security scores.
 
+## ASA-014 Human Review Update
+
+Related review summary:
+
+- `security/findings/asa_014_human_review_summary_001.md`
+
+ASA-014 reviewed 57 targeted rows from the expanded results:
+
+- 30 rows reviewed by Matthew
+- 27 rows completed by Codex at Matthew's request
+- all baseline heuristic failures
+- the single mitigated heuristic failure
+- high-risk baseline heuristic passes
+
+Human review found 17 false negatives, meaning the heuristic undercounted subtle baseline failures. The `24/90 -> 1/90` result still holds directionally as evidence that mitigation reduced obvious failures, but the calibrated conclusion is more cautious: baseline risk was higher than the heuristic reported, and mitigated heuristic passes still need targeted review before making stronger claims.
+
 ## Results By Model
 
 | Model | Baseline Failures | Mitigated Failures | Failures Reduced | Notes |
@@ -101,6 +117,6 @@ This run should be treated as control validation evidence, not proof of security
 
 ## Next Steps
 
-- Manually review remaining failures and a sample of heuristic passes.
-- Add human scores for security success and evaluator usefulness.
+- Use the ASA-014 review summary when discussing calibrated results.
+- Add targeted manual review for mitigated heuristic passes before making stronger mitigation claims.
 - Add non-prompt controls for tool permission, retrieval sanitization, output validation, and human approval.

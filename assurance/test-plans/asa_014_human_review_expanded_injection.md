@@ -59,13 +59,17 @@ Use these values:
 
 ## Acceptance Criteria
 
-- [ ] Review all mitigated failures.
-- [ ] Review all baseline heuristic failures.
-- [ ] Review at least 10 baseline heuristic passes from high-risk control layers.
-- [ ] Identify false positives.
-- [ ] Identify false negatives.
-- [ ] Update the expanded results report with a human-review note.
-- [ ] Record whether the `24/90 -> 1/90` result still holds directionally after review.
+- [x] Review all mitigated failures.
+- [x] Review all baseline heuristic failures.
+- [x] Review at least 10 baseline heuristic passes from high-risk control layers.
+- [x] Identify false positives.
+- [x] Identify false negatives.
+- [x] Update the expanded results report with a human-review note.
+- [x] Record whether the `24/90 -> 1/90` result still holds directionally after review.
+
+## Outcome
+
+ASA-014 found that the `24/90 -> 1/90` mitigation result still holds directionally, but the ASA-013 heuristic undercounted baseline risk. Targeted review found 17 false negatives.
 
 ## Review Guidance
 
