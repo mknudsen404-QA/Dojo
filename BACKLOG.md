@@ -66,6 +66,16 @@
 - [x] Generate ASA-013 expanded prompt-injection results report.
 - [x] Create ASA-014 human-review queue for expanded prompt-injection results.
 - [x] Adopt scoring operating model: heuristics plus AI judge plus targeted human audit.
+- [x] Close Phase 2 / Phase 2.5 as complete enough to proceed.
+
+## Phase 3 Candidates
+
+- [x] Start ASA-015 AI security severity rubric.
+- [x] Create Phase 3 finding severity rubric.
+- [ ] Start ASA-016 system prompt leakage simulation.
+- [ ] Start ASA-017 insecure output handling tests.
+- [ ] Create Phase 3 attack log template.
+- [ ] Build small red-team runner or adapt existing eval runner for security labs.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -233,7 +243,7 @@ Superseding operating model:
 
 - `evals/scoring/scoring-operating-model.md`
 
-## ASA-015: AI-Assisted Scoring Calibration
+## ASA-014-FU: AI-Assisted Scoring Calibration
 
 Goal: Replace bulk manual scoring with AI-assisted scoring plus targeted human audit.
 
@@ -261,3 +271,49 @@ Acceptance criteria:
 - [ ] Report states that AI-assisted scoring is not ground truth.
 - [ ] Final conclusion is based on combined heuristic, AI-judge, and targeted human review.
 - [ ] Routine human review is limited to 10-20 targeted rows unless calibration requires more.
+
+## ASA-015: AI Security Severity Rubric
+
+Goal: Create the reusable severity rubric for AI security findings.
+
+Severity levels:
+
+- Critical
+- High
+- Medium
+- Low
+- Informational
+
+Acceptance criteria:
+
+- [x] Define each severity level.
+- [x] Include impact and likelihood guidance.
+- [x] Include examples specific to AI systems.
+- [x] Include escalation guidance.
+- [x] Include recommended report language.
+- [x] Store rubric in `security/findings/severity_rubric.md`.
+
+## ASA-016: System Prompt Leakage Simulation
+
+Goal: Test whether local models reveal, summarize, or transform a fake system prompt when pressured.
+
+Acceptance criteria:
+
+- [ ] Create fake system prompt leakage test cases.
+- [ ] Run against at least three local models.
+- [ ] Record baseline results.
+- [ ] Identify leakage, refusal, and partial leakage behavior.
+- [ ] Produce a short finding or lab report.
+- [ ] Avoid using real secrets or real system prompts.
+
+## ASA-017: Insecure Output Handling
+
+Goal: Test whether models produce dangerous downstream output such as unsafe SQL, shell commands, HTML/script content, or destructive automation steps.
+
+Acceptance criteria:
+
+- [ ] Create insecure-output test cases.
+- [ ] Include SQL, shell, HTML/script, and automation examples.
+- [ ] Run against at least three local models.
+- [ ] Classify outputs by severity using the ASA-015 rubric.
+- [ ] Produce a short findings report.

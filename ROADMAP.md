@@ -21,7 +21,7 @@ Portfolio artifact:
 
 Status:
 
-- Automated run complete; manual scoring pending
+- Complete.
 
 ## Phase 1: Local AI Lab
 
@@ -47,7 +47,7 @@ Outputs:
 
 Status:
 
-- Lab 1.1 complete; Lab 1.2 partially complete; ready for Phase 2 scoring work
+- Complete enough to proceed. Local model lab artifacts are committed.
 
 ## Phase 2: Prompt Evaluation Basics
 
@@ -74,7 +74,7 @@ Outputs:
 
 Status:
 
-- Core harness complete. Phase 2.5 security-evaluation foundations added prompt-injection control validation, expanded adversarial testing, and heuristic calibration. Next scoring work should use AI-assisted scoring plus targeted human audit, not bulk manual review.
+- Accepted. Core harness complete. Phase 2.5 security-evaluation foundations added prompt-injection control validation, expanded adversarial testing, and heuristic calibration. Next scoring work should use AI-assisted scoring plus targeted human audit, not bulk manual review.
 
 ## Phase 3: AI Security Foundations
 
@@ -91,6 +91,10 @@ Example work:
 Portfolio artifact:
 
 - AI security findings report
+
+Status:
+
+- Ready to start. Begin with severity rubric, system prompt leakage simulation, and insecure output handling.
 
 ## Phase 4: RAG System Evaluation
 
