@@ -94,7 +94,7 @@ Portfolio artifact:
 
 Status:
 
-- Ready to start. Begin with severity rubric, system prompt leakage simulation, and insecure output handling.
+- In progress. Severity rubric, Phase 3 attack library, red-team runner, attack log, and first LLM security assessment are complete. Next work is targeted human review of critical/high finding candidates and mitigation reruns.
 
 ## Phase 4: RAG System Evaluation
 

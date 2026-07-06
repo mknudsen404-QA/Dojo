@@ -55,9 +55,9 @@ capstone/    Final client-style assurance package
 
 ## Current Phase
 
-Phase 2: Evaluation Harness.
+Phase 3: AI Security Foundations.
 
-The focus is to build a repeatable evaluation runner that compares local models using structured prompt sets and produces saved results.
+The focus is to safely test major LLM attack classes with local models, record attack logs, assign severity, and recommend mitigations.
 
 ## Phase 0 Acceptance Criteria
 
@@ -96,6 +96,18 @@ The focus is to build a repeatable evaluation runner that compares local models 
 - [x] Initial scored report generated
 - [x] Scored-run manifest created
 - [x] First security finding recorded
+
+## Phase 3 Outputs
+
+- [x] AI security severity rubric created
+- [x] Phase 3 security test design created
+- [x] 50-case attack prompt library created
+- [x] Red-team runner created
+- [x] Report generator created
+- [x] 50 prompts run against `qwen2.5:3b`, `llama3.2:3b`, and `gemma3:1b`
+- [x] Phase 3 attack log captured
+- [x] First LLM security assessment report generated
+- [ ] Human-review critical/high heuristic finding candidates
 
 ## Scoring
 

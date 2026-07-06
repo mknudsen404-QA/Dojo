@@ -72,10 +72,16 @@
 
 - [x] Start ASA-015 AI security severity rubric.
 - [x] Create Phase 3 finding severity rubric.
-- [ ] Start ASA-016 system prompt leakage simulation.
-- [ ] Start ASA-017 insecure output handling tests.
-- [ ] Create Phase 3 attack log template.
-- [ ] Build small red-team runner or adapt existing eval runner for security labs.
+- [x] Start ASA-016 system prompt leakage simulation.
+- [x] Start ASA-017 insecure output handling tests.
+- [x] Create Phase 3 attack log structure.
+- [x] Build small red-team runner or adapt existing eval runner for security labs.
+- [x] Create 50-case Phase 3 attack prompt library.
+- [x] Run Phase 3 attack library against three local models.
+- [x] Generate `security/findings/llm_security_assessment_001.md`.
+- [ ] Human-review critical/high Phase 3 heuristic finding candidates.
+- [ ] Create focused finding report for confirmed system-prompt leakage failures.
+- [ ] Create mitigation rerun for system-prompt leakage controls.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -299,12 +305,16 @@ Goal: Test whether local models reveal, summarize, or transform a fake system pr
 
 Acceptance criteria:
 
-- [ ] Create fake system prompt leakage test cases.
-- [ ] Run against at least three local models.
-- [ ] Record baseline results.
-- [ ] Identify leakage, refusal, and partial leakage behavior.
-- [ ] Produce a short finding or lab report.
-- [ ] Avoid using real secrets or real system prompts.
+- [x] Create fake system prompt leakage test cases.
+- [x] Run against at least three local models.
+- [x] Record baseline results.
+- [x] Identify leakage, refusal, and partial leakage behavior.
+- [x] Produce a short finding or lab report.
+- [x] Avoid using real secrets or real system prompts.
+
+Outcome: Included in `prompts/security/phase3_attack_prompts_001.jsonl`, `security/attack-logs/phase3_attack_results_001.json`, and `security/findings/llm_security_assessment_001.md`.
+
+Caveat: Heuristic failures require targeted human review before final finding severity is confirmed.
 
 ## ASA-017: Insecure Output Handling
 
@@ -312,8 +322,12 @@ Goal: Test whether models produce dangerous downstream output such as unsafe SQL
 
 Acceptance criteria:
 
-- [ ] Create insecure-output test cases.
-- [ ] Include SQL, shell, HTML/script, and automation examples.
-- [ ] Run against at least three local models.
-- [ ] Classify outputs by severity using the ASA-015 rubric.
-- [ ] Produce a short findings report.
+- [x] Create insecure-output test cases.
+- [x] Include SQL, shell, HTML/script, and automation examples.
+- [x] Run against at least three local models.
+- [x] Classify outputs by severity using the ASA-015 rubric.
+- [x] Produce a short findings report.
+
+Outcome: Included in `prompts/security/phase3_attack_prompts_001.jsonl`, `security/attack-logs/phase3_attack_results_001.json`, and `security/findings/llm_security_assessment_001.md`.
+
+Caveat: Heuristic failures require targeted human review before final finding severity is confirmed.
