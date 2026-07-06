@@ -10,6 +10,8 @@ ASA-014 reviewed the targeted human-review queue from ASA-013.
 
 The review confirms the main ASA-013 direction: prompt mitigation appears to reduce prompt-injection failures substantially. It also confirms an important caveat: the heuristic undercounted subtle baseline failures.
 
+This review should be treated as a calibration artifact, not as the ongoing scoring model. Future runs should use deterministic heuristics and AI-assisted scoring for bulk review, with humans auditing targeted samples, critical failures, suspicious passes, and scoring disagreements.
+
 ## Inputs
 
 - `security/attack-logs/asa_014_human_review_queue_001.jsonl`

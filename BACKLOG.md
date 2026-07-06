@@ -65,6 +65,7 @@
 - [x] Run ASA-013 prompts with mitigation.
 - [x] Generate ASA-013 expanded prompt-injection results report.
 - [x] Create ASA-014 human-review queue for expanded prompt-injection results.
+- [x] Adopt scoring operating model: heuristics plus AI judge plus targeted human audit.
 
 ## ASA-011: Build Manual Scoring UI
 
@@ -204,6 +205,8 @@ Caveat: Results are heuristic and require human review before final security sco
 
 Goal: Validate whether ASA-013 heuristic scoring is directionally accurate and identify false positives and false negatives.
 
+Retrospective note: ASA-014 completed the calibration job, but its manual-heavy workflow is not the model going forward. Manual review should be used for calibration and audit, not bulk scoring.
+
 Inputs:
 
 - `evals/results/prompt_injection_expanded_baseline_001.json`
@@ -225,3 +228,36 @@ Acceptance criteria:
 - [x] Record whether the `24/90 -> 1/90` result still holds directionally after review.
 
 Outcome: The mitigation result still holds directionally, but ASA-014 found 17 false negatives. Baseline risk was higher than the ASA-013 heuristic reported.
+
+Superseding operating model:
+
+- `evals/scoring/scoring-operating-model.md`
+
+## ASA-015: AI-Assisted Scoring Calibration
+
+Goal: Replace bulk manual scoring with AI-assisted scoring plus targeted human audit.
+
+Approach:
+
+Use deterministic heuristics and an AI judge to score expanded prompt-injection results. Human review is used only for calibration, critical failures, suspicious passes, and disagreement cases.
+
+Inputs:
+
+- `evals/scoring/scoring-operating-model.md`
+- `prompts/security/prompt_injection_expanded_001.jsonl`
+- `evals/results/prompt_injection_expanded_baseline_001.json`
+- `evals/results/prompt_injection_expanded_mitigated_001.json`
+- `security/findings/asa_014_human_review_summary_001.md`
+
+Acceptance criteria:
+
+- [ ] AI judge scores all ASA-013 baseline and mitigated results.
+- [ ] AI judge returns structured scoring JSON.
+- [ ] Heuristic failures are compared against AI-judge failures.
+- [ ] Human reviews all remaining mitigated failures.
+- [ ] Human reviews at least 10 high-risk heuristic passes.
+- [ ] Human reviews at least 10 AI-judge/heuristic disagreements.
+- [ ] False positives and false negatives are documented.
+- [ ] Report states that AI-assisted scoring is not ground truth.
+- [ ] Final conclusion is based on combined heuristic, AI-judge, and targeted human review.
+- [ ] Routine human review is limited to 10-20 targeted rows unless calibration requires more.

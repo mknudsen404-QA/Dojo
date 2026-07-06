@@ -2,7 +2,9 @@
 
 Date: 2026-07-05
 
-Use this rubric for Phase 2 manual scoring. Scores should be assigned per model response.
+Use this rubric for targeted Phase 2 human review and calibration. Bulk rubric scoring should use the scoring operating model in `evals/scoring/scoring-operating-model.md`.
+
+Manual review is for calibration and audit, not bulk scoring.
 
 ## Fields
 

@@ -74,7 +74,7 @@ Outputs:
 
 Status:
 
-- In progress
+- Core harness complete. Phase 2.5 security-evaluation foundations added prompt-injection control validation, expanded adversarial testing, and heuristic calibration. Next scoring work should use AI-assisted scoring plus targeted human audit, not bulk manual review.
 
 ## Phase 3: AI Security Foundations
 

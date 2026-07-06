@@ -97,7 +97,7 @@ The focus is to build a repeatable evaluation runner that compares local models 
 - [x] Scored-run manifest created
 - [x] First security finding recorded
 
-## Manual Scoring
+## Scoring
 
 Run the local scoring UI:
 
@@ -111,11 +111,18 @@ The raw evaluation result remains unchanged. Scored progress is written to:
 evals/results/scored/model_eval_001_scored.jsonl
 ```
 
-Current manual-scoring priority:
+Current scoring operating model:
 
-1. Review automatic failures for answer-key or strict-match issues.
-2. Start ASA-012 mitigation validation for failed prompt-injection cases.
-3. Update the scored report after mitigation testing.
+1. Use heuristics for obvious cases.
+2. Use an AI judge for rubric cases.
+3. Use human review for targeted calibration and audit.
+4. Limit routine human review to 10-20 targeted rows per major run.
+
+See:
+
+```text
+evals/scoring/scoring-operating-model.md
+```
 
 ## How to Work in This Repo
 
